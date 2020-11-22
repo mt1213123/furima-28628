@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  get 'furimas', to: 'furimas#index'
+  get '/furimas', to: 'furimas#index'
 end
