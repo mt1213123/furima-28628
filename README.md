@@ -42,22 +42,22 @@ Things you may want to cover:
 
  ## items テーブル
 
-|Column      |Type   |Options                     |
-|------------|-------|----------------------------|
-|title       |string |null:false                  |
-|description |text   |null:false                  |
-|price       |integer|null:false                  |
-|category_id |integer|null:false                  |
-|condition_id|integer|null:false                  |
-|area_id     |integer|null:false                  |
-|fee_id      |integer|null:false                  |
-|days_id     |integer|null:false                  |
-|user_id     |integer|null:false, foreign_key:true|
+|Column       |Type   |Options                     |
+|-------------|-------|----------------------------|
+|title        |string |null:false                  |
+|description  |text   |null:false                  |
+|price        |integer|null:false                  |
+|category_id  |integer|null:false                  |
+|condition_id |integer|null:false                  |
+|prefecture_id|integer|null:false                  |
+|fee_id       |integer|null:false                  |
+|days_id      |integer|null:false                  |
+|user_id      |integer|null:false, foreign_key:true|
 
 
 ### Association
  - belongs_to :user
- - has_one :
+ - has_one : item
 
   ## purchases テーブル
 
@@ -68,7 +68,7 @@ Things you may want to cover:
 
 ### Association
  - belongs_to :user
- - has_one: addresses
+ - has_one: address
  - belongs_to :item
 
   ## addresses テーブル
