@@ -25,16 +25,16 @@ Things you may want to cover:
 
 ## users テーブル
 
-|Column         |Type   |Options    |
-|---------------|-------|-----------|
-|nickname       |string |null:false |
-|email          |string |unique:true|
+|Column            |Type   |Options    |
+|------------------|-------|-----------|
+|nickname          |string |null:false |
+|email             |string |unique:true|
 |encrypted_password|string |null:false |
-|family_name    |string |null:false |
-|first_name     |string |null:false |
-|kanafamily_name|string |null:false |
-|kanafirst_name |string |null:false |
-|birth_day      |date   |null:false |
+|family_name       |string |null:false |
+|first_name        |string |null:false |
+|kanafamily_name   |string |null:false |
+|kanafirst_name    |string |null:false |
+|birth_day         |date   |null:false |
 
 ### Association
  - has_many :items
@@ -57,17 +57,7 @@ Things you may want to cover:
 
 ### Association
  - belongs_to :user
- - has_many :images
-
- ## images テーブル
-
-|Column |Type   |Options                     |
-|-------|-------|----------------------------|
-|image  |string |null:false                  |
-|item_id|integer|null:false, foreign_key:true|
-
-### Association
- - belongs_to :item
+ - has_one :
 
   ## purchases テーブル
 
@@ -79,18 +69,19 @@ Things you may want to cover:
 ### Association
  - belongs_to :user
  - has_one: addresses
+ - belongs_to :item
 
   ## addresses テーブル
 
-|Column     |Type   |Options                     |
-|-----------|-------|----------------------------|
-|postal_code|string |null:false                  |
-|prefecture |string |null:false                  |
-|city       |integer|null:false                  |
-|block_num  |string |null:false                  |
-|building   |string |null:false                  |
-|phone_num  |string |null:false                  |
-|purchase_id|integer|null:false, foreign_key:true|
+|Column       |Type   |Options                     |
+|-------------|-------|----------------------------|
+|postal_code  |string |null:false                  |
+|prefecture_id|integer|null:false                  |
+|city         |string |null:false                  |
+|block_num    |string |null:false                  |
+|building     |string |                            |
+|phone_num    |string |null:false                  |
+|purchase_id  |integer|null:false, foreign_key:true|
 
 ### Association
  - belongs_to: purchase
