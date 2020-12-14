@@ -8,12 +8,14 @@ class User < ApplicationRecord
   VALID_NAME_REGEX = /\A[ぁ-んァ-ン一-龥]/.freeze
   VALID_KANANAME_REGEX = /\A[ァ-ヶー－]+\z/.freeze
 
-  validates :nickname, presence: true
-  validates :email, presence: true, uniqueness: { case_sensitive: false }, format: { with: VALID_EMAIL_REGEX }
-  validates :password, presence: true, length: { minimum: 6 }, format: { with: VALID_PASSWORD_REGEX }
-  validates :family_name, presence: true, format: { with: VALID_NAME_REGEX }
-  validates :first_name, presence: true, format: { with: VALID_NAME_REGEX }
-  validates :kanafamily_name, presence: true, format: { with: VALID_KANANAME_REGEX }
-  validates :kanafirst_name, presence: true, format: { with: VALID_KANANAME_REGEX }
-  validates :birth_day, presence: true
+  with_options presence: true do
+    validates :nickname
+    validates :email, uniqueness: { case_sensitive: false }, format: { with: VALID_EMAIL_REGEX }
+    validates :password, length: { minimum: 6 }, format: { with: VALID_PASSWORD_REGEX }
+    validates :family_name, format: { with: VALID_NAME_REGEX }
+    validates :first_name, format: { with: VALID_NAME_REGEX }
+    validates :kanafamily_name, format: { with: VALID_KANANAME_REGEX }
+    validates :kanafirst_name, format: { with: VALID_KANANAME_REGEX }
+    validates :birth_day
+  end
 end
