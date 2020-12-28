@@ -15,7 +15,7 @@ class Item < ApplicationRecord
     validates :image
     validates :title
     validates :description
-    validates :price
+    validates :price, numericality: { greater_than: 300, less_than: 9999999 }
   end
 
   validates :category_id, numericality: { other_than: 1 } 
