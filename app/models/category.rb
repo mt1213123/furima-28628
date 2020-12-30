@@ -13,10 +13,9 @@ class Category < ActiveHash::Base
     { id: 11, name: 'ハンドメイド' },
     { id: 12, name: 'チケット' },
     { id: 13, name: '自動車・オートバイ' },
-    { id: 14, name: 'その他' },
+    { id: 14, name: 'その他' }
   ]
 
   include ActiveHash::Associations
   has_many :items
-
-  end
+end

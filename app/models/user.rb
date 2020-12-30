@@ -4,7 +4,7 @@ class User < ApplicationRecord
 
   has_many :items
   has_many :purchases
-         
+
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
   VALID_NAME_REGEX = /\A[ぁ-んァ-ン一-龥々]/.freeze
