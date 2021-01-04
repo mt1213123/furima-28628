@@ -1,7 +1,12 @@
 class ItemsController < ApplicationController
   skip_before_action :verify_authenticity_token
-  before_action :authenticate_user! only: [:new, :create]
+  before_action :authenticate_user! only:[:new, :create]
 
+  def index
+    @item = Item.all
+    @items = Item.includes(:user)
+  end
+  
   def new
     @item = Item.new
   end
