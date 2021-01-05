@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :authenticate_user!, only: [:new, :create, :edit, :update]
-  before_action :set_item, only: [:show, :edit, :update]
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   def index
     @item = Item.all
@@ -35,6 +35,11 @@ class ItemsController < ApplicationController
   else
       render :edit
   end
+  end
+
+  def destroy
+    @item.destroy
+    redirect_to root_path
   end
 
   private
