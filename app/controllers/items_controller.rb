@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   skip_before_action :verify_authenticity_token
-  before_action :authenticate_user!, only: [:new, :create, :edit]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
   before_action :set_item, only: [:show, :edit, :update]
 
   def index
@@ -30,7 +30,7 @@ class ItemsController < ApplicationController
 
   def update
     if @item.update(item_params)
-      redirect_to root_path
+      redirect_to root_path if current_user.id == @item.user_id
     else
       render :edit
     end
