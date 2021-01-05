@@ -43,6 +43,11 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Fee must be other than 1")
       end
+      it 'prefectureが未選択では登録できない' do
+        @item.prefecture_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Prefecture must be other than 1")
+      end
       it 'daysが未選択では登録できない' do
         @item.days_id = 1
         @item.valid?
@@ -60,6 +65,11 @@ RSpec.describe Item, type: :model do
       end
       it 'priceが英字では登録できない' do
         @item.price = 'aaa'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is not a number")
+      end
+      it 'priceが英数字では登録できない' do
+        @item.price = 'aa1'
         @item.valid?
         expect(@item.errors.full_messages).to include("Price is not a number")
       end

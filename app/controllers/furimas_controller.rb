@@ -3,6 +3,7 @@ class FurimasController < ApplicationController
 
   def index; 
     @item = Item.all
+    @items = Item.includes(:user)
   end
 
   def move_to_index
