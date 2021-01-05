@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :authenticate_user!, only: [:new, :create]
+  before_action :set_item, only: [:show, :edit]
 
   def new
     @item = Item.new
@@ -16,11 +17,9 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
   end
 
   def edit
-    @item = Item.find(params[:id])
   end
 
   def update
@@ -36,5 +35,9 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:title, :description, :image, :category_id, :condition_id, :prefecture_id, :fee_id, :days_id, :price).merge(user_id: current_user.id)
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 end
