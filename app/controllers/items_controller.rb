@@ -3,6 +3,11 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
   before_action :set_item, only: [:show, :edit]
 
+  def index
+    @item = Item.all
+    @items = Item.includes(:user)
+  end
+  
   def new
     @item = Item.new
   end
