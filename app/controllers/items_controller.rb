@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :authenticate_user!, only: [:new, :create]
-  before_action :set_item, only: [:show, :edit]
+  before_action :set_item, only: [:show, :edit, :update]
 
   def index
     @item = Item.all
@@ -28,7 +28,6 @@ class ItemsController < ApplicationController
   end
 
   def update
-    item = Item.find(params[:id])
     if item.update(item_params)
       redirect_to root_path
     else
