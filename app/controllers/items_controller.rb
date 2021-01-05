@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   skip_before_action :verify_authenticity_token
-  before_action :authenticate_user!, only:[:new, :create]
+
+  before_action :authenticate_user!, only: [:new, :create]
 
   def index
     @item = Item.all
@@ -18,6 +19,10 @@ class ItemsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    @item = Item.find(params[:id])
   end
 
   private
