@@ -1,6 +1,6 @@
 class PurchaseAddress
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :postal_code, :prefecture_id, :city, :block_num, :building, :phone_num, :purchase_id, :token
+  attr_accessor :user_id, :item_id, :postal_code, :prefecture_id, :city, :block_num, :building, :phone_num, :token
 
 VALID_POSTALCODE_REGEX = /\A\d{3}[-]\d{4}\z/
 VALID_PHONE_REGEX = /\A\d{11}\z/
@@ -13,7 +13,6 @@ with_options presence: true do
   validates :city
   validates :block_num
   validates :phone_num, length: { maximum: 11 }, format: { with: VALID_PHONE_REGEX }
-  #validates :purchase_id
   validates :token
 end
 

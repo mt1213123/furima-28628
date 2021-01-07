@@ -9,6 +9,6 @@ FactoryBot.define do
     token            {"tok_abcdefghijk00000000000000000"}
     user_id          { 1 }
     item_id          { 1 }
-    purchase
+    purchase_id      { 1 }
   end
 end
