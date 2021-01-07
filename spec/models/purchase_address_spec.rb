@@ -3,11 +3,12 @@ require 'rails_helper'
 RSpec.describe PurchaseAddress, type: :model do
   describe '配送先情報の保存' do
     before do
+      @purchase = FactoryBot.build(:purchase)
       @purchase_address = FactoryBot.build(:purchase_address)
     end
 
     it 'すべての値が正しく入力されていれば保存できること' do
-      expect(@purchase_address).to be_valid
+      expect(@purchase_addresses).to be_valid
     end
     it 'postal_codeが空だと保存できないこと' do
       @purchase_address.postal_code = nil
@@ -50,6 +51,11 @@ RSpec.describe PurchaseAddress, type: :model do
     end
     it 'phone_numが11桁以上だと保存できないこと' do
       @purchase_address.phone_num = '080080008000'
+      @purchase_address.valid?
+      expect(@purchase_address.errors.full_messages).to include("Phone num is invalid")
+    end
+    it 'phone_numが数字でないと保存できないこと' do
+      @purchase_address.phone_num = 'aaaaaaaaaaa'
       @purchase_address.valid?
       expect(@purchase_address.errors.full_messages).to include("Phone num is invalid")
     end
